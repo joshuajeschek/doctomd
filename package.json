@@ -5,7 +5,7 @@
   "bin": "bin/doctomd",
   "main": "src/doctomd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node .\\bin\\doctomd --input test/input --output test/output --pre test/pre --post test/post"
   },
   "keywords": [],
   "author": "",
