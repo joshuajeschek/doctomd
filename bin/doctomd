@@ -12,6 +12,10 @@ const args = require("yargs")
 		demandOption: true,
 		describe: "Markdown Output Directory",
 	})
+	.option("front", {
+        type: "string",
+		describe: "Frontmatter Directory",
+	})
 	.option("pre", {
 		type: "string",
 		describe: "Markdown Directory",
