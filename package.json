@@ -1,6 +1,6 @@
 {
   "name": "doctomd",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Javadoc to Markdown Converter",
   "bin": "bin/doctomd",
   "main": "src/doctomd.js",

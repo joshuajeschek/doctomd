@@ -25,11 +25,11 @@ doctomd \
 
 | flag       | description                                                                             | required |
 | ---------- | --------------------------------------------------------------------------------------- | -------- |
-| `--input`  | directory with input Java files                                                         | ✅       |
-| `--output` | directory for output Markdown files                                                     | ✅       |
-| `--front`  | directory with files for frontmatter. Can / Should also be used for standalone files    | ❌       |
-| `--pre`    | content of files in this directory is put after the heading and before the doc content. | ❌       |
-| `--post`   | content of files in this directory is put after the doc content                         | ❌       |
+| `input`  | directory with input Java files                                                         | ✅       |
+| `output` | directory for output Markdown files                                                     | ✅       |
+| `front`  | directory with files for frontmatter. Can / Should also be used for standalone files    | ❌       |
+| `pre`    | content of files in this directory is put after the heading and before the doc content. | ❌       |
+| `post`   | content of files in this directory is put after the doc content                         | ❌       |
 
 For the files in the frontmatter / pre / post directories to matched with the input Java files, the directory structure and file names should be exactly the same (excluding the file extension)
 
@@ -42,6 +42,8 @@ Feel free to post issues and develop this further.
 - test directory should look like this:
     ```
     test
+    ├─front
+    │ └─...
     ├─input
     │ └─...
     ├─output
