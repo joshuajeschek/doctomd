@@ -1,0 +1,24 @@
+#! /usr/bin/env node
+
+const args = require("yargs")
+	.version("1.0.0")
+	.option("input", {
+        type: "string",
+		demandOption: true,
+		describe: "Java Input Directory",
+	})
+	.option("output", {
+        type: "string",
+		demandOption: true,
+		describe: "Markdown Output Directory",
+	})
+	.option("pre", {
+		type: "string",
+		describe: "Markdown Directory",
+    })
+    .option("post", {
+		type: "string",
+		describe: "Markdown Directory",
+	}).argv;
+
+require(__dirname + "/../src/doctomd.js").generate(args);

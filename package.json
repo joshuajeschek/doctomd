@@ -1,0 +1,19 @@
+{
+  "name": "doctomd",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "bin/doctomd",
+  "main": "src/doctomd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "glob": "^7.2.0",
+    "glob-promise": "^4.2.2",
+    "rimraf": "^3.0.2",
+    "yargs": "^17.3.0"
+  }
+}
