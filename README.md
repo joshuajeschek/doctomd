@@ -26,4 +26,5 @@ Feel free to post issues and develop this further.
     └─pre
       └─...
     ```
-- `node .\bin\doctomd --input test/input --output test/output --pre test/pre --post test/post`
+- `npm run test`  
+  (`node .\bin\doctomd --input test/input --output test/output --pre test/pre --post test/post`)
