@@ -6,6 +6,11 @@ Converts JavaDoc to Markdown. Based on [delight-im/Javadoc-to-Markdown](https://
 - Customize each Markdown File with Pre- and Post-Markdown Files (Will be added in front or after content)
 - will delete the specified output directory before generating!
 
+## Installation
+```
+npm i -g doctomd
+```
+
 ## Usage
 `doctomd --input {input directory} --output {output directory} --pre {pre directory} --post {post directory}`
 
