@@ -1,11 +1,11 @@
 {
   "name": "doctomd",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Javadoc to Markdown Converter",
   "bin": "bin/doctomd",
   "main": "src/doctomd.js",
   "scripts": {
-    "test": "node .\\bin\\doctomd --input test/input --output test/output --front test/front --pre test/pre --post test/post"
+    "test": "node .\\bin\\doctomd --input test/input --output test/output --front test/front --pre test/pre --post test/post --module code --module hyphen --module link"
   },
   "keywords": ["documentation", "java", "markdown"],
   "author": "Joshua Jeschek <joshua.jeschek@gmail.com> (https://github.com/joshuajeschek)",

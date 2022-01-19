@@ -19,10 +19,14 @@ const args = require("yargs")
 	.option("pre", {
 		type: "string",
 		describe: "Markdown Directory",
-    })
+	})
     .option("post", {
 		type: "string",
 		describe: "Markdown Directory",
+	})
+	.option("module", {
+		type: "array",
+		describe: "Module names",
 	}).argv;
 
 require(__dirname + "/../src/doctomd.js").generate(args);

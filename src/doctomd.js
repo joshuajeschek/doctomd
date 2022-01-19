@@ -2,21 +2,34 @@
 const fs = require('fs').promises;
 const getDirName = require('path').dirname;
 const getFileName = require('path').basename;
-const rimraf = require("rimraf");
-const glob = require("glob-promise");
 const { exit } = require('process');
+
 const JavadocToMarkdown = require('./javadoc-to-markdown');
+const Modules = require('./modules');
+const { getAllFiles } = require('./files');
 
 class DoctoMd {
 
     static async generate(parameters) {
         console.log("doctomd has been called:", parameters);
 
-        const files = await this.getAllFiles(parameters.input, parameters.front, parameters.pre, parameters.post);
+        const modules = new Modules();
+        if (typeof parameters.module === 'string') {
+            parameters.module = [parameters.module];
+        }
+        for (const modulename of parameters.module) {
+            modules.add(modulename);
+        }
+
+        const files = await getAllFiles(parameters.input, parameters.front, parameters.pre, parameters.post);
         console.log("Found these files:", JSON.stringify(files, null, 2));
 
-        rimraf.sync(parameters.output);
+        await fs.rm(parameters.output, { recursive: true, force: true });
         console.log("cleared output directory.");
+
+        modules.process('pre', files.input);
+
+        const output_files = [];
 
         // Generate Docs for each input file
         for (const input of files.input) {
@@ -54,6 +67,8 @@ class DoctoMd {
                 (preIndex > -1) ? prePath : undefined,
                 (postIndex > -1) ? postPath : undefined
             );
+
+            output_files.push(output);
         }
 
         // Write "lonely" frontmatter files - aka full pages
@@ -72,29 +87,11 @@ class DoctoMd {
                 // write frontmatter
                 const frontContent = await fs.readFile(front, 'utf-8');
                 await fs.writeFile(output, frontContent);
+                output_files.push(output);
             }
         }
-    }
 
-    static async getAllFiles(inputDir, frontDir, preDir, postDir) {
-        const result = {};
-        result.input = await glob(inputDir + '/**/*.java').catch(r => {
-            console.error(r);
-            exit(-1);
-        });
-        frontDir && (result.front = await glob(frontDir + '/**/*.md').catch(r => {
-            console.error(r);
-            exit(-1);
-        }));
-        preDir && (result.pre = await glob(preDir + '/**/*.md').catch(r => {
-            console.error(r);
-            exit(-1);
-        }));
-        postDir && (result.post = await glob(postDir + '/**/*.md').catch(r => {
-            console.error(r);
-            exit(-1);
-        }));
-        return result;
+        modules.process('post', output_files);
     }
 
     static async generateClassDocs(input, output, front, pre, post) {
