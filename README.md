@@ -35,7 +35,7 @@ doctomd \
 | `front`  | directory with files for frontmatter. Can / Should also be used for standalone files    | ❌       |
 | `pre`    | content of files in this directory is put after the heading and before the doc content. | ❌       |
 | `post`   | content of files in this directory is put after the doc content                         | ❌       |
-| `module` | currently available modules:  `code`, `hypen`, `link`                                   |          |
+| `module` | currently available modules:  `code`, `hypen`, `link`                                   | ❌       |
 
 For the files in the frontmatter / pre / post directories to matched with the input Java files, the directory structure and file names should be exactly the same (excluding the file extension)
 
